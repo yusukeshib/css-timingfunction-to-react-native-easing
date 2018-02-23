@@ -1,11 +1,11 @@
 {
   "name": "css-timingfunction-to-react-native-easing",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "rm -rf lib && babel src --out-dir lib",
+    "build": "babel src --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
