@@ -10,13 +10,13 @@ const steps = (n, type) => {
 const internal = {
 
   // default 
-  'linear'            : () => Easing.linear(),
-  'ease'              : () => Easing.ease(),
+  'linear'            : () => Easing.linear,
+  'ease'              : () => Easing.ease,
   'ease-in'           : () => Easing.in(Easing.ease),
   'ease-out'          : () => Easing.out(Easing.ease),
   'ease-in-out'       : () => Easing.inOut(Easing.ease),
-  'step-start'        : () => Easing.step1(),
-  'step-end'          : () => Easing.step0(),
+  'step-start'        : () => Easing.step1,
+  'step-end'          : () => Easing.step0,
   'steps'             : (args) => steps(args[0], args[1]),
   'cubic-bezier'      : (args) => Easing.bezier.apply(null, args),
 
@@ -57,7 +57,7 @@ const internal = {
 
 }
 
-export default (easing, t=1) => {
+module.exports = (easing, t=1) => {
   const m = easing.match(/^([^)]+)(?:\(([^)]+)\))?$/)
   const name = m[1]
   const args = m[2] ? m[2].split(/\s*,\s*/) : []
