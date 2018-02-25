@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm test && npm run build",
     "build": "babel src --out-dir lib",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require react-native-mock/mock"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1"
+    "babel-preset-env": "^1.6.1",
+    "mocha": "^5.0.0",
+    "react": "^15.5.4",
+    "react-native": "0.52.0",
+    "react-native-mock": "^0.3.1",
+    "should": "^13.2.1"
   },
   "author": "Yusuke Shibata",
   "license": "MIT"
