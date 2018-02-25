@@ -1,10 +1,10 @@
 import { Easing } from 'react-native'
 
 const steps = (n, type) => {
-  const fn = Easing[type === 'start' ? 'step1' : 'step0']
+  const fn = Easing[type === 'start' ? 'step0' : 'step1']
   return (v) => {
-    const p = Math.floor(v*n)
-    return (p + fn(v-p)) / n
+    const p = v*n % 1
+    return ((v*n - p) + fn(p)) / n
   }
 }
 const internal = {
@@ -15,8 +15,8 @@ const internal = {
   'ease-in'           : () => Easing.in(Easing.ease),
   'ease-out'          : () => Easing.out(Easing.ease),
   'ease-in-out'       : () => Easing.inOut(Easing.ease),
-  'step-start'        : () => Easing.step1,
-  'step-end'          : () => Easing.step0,
+  'step-start'        : () => Easing.step0,
+  'step-end'          : () => Easing.step1,
   'steps'             : (args) => steps(args[0], args[1]),
   'cubic-bezier'      : (args) => Easing.bezier.apply(null, args),
 
@@ -63,4 +63,4 @@ module.exports = (easing, t=1) => {
   const args = m[2] ? m[2].split(/\s*,\s*/) : []
   return internal[name](args)
 }
-
+module.exports.easings = internal
